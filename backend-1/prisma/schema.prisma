@@ -1,0 +1,185 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id              BigInt      @id @default(autoincrement())
+  firebaseUid     String?     @unique
+  email           String?     @unique
+  name            String
+  birthDate       DateTime
+  gender          Gender
+  goal            Goal
+  anonymousMode   Boolean     @default(false)
+  theme           String      @default("calm")
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  dailyEntries    DailyEntry[]
+  cycles          Cycle[]
+  reminders       Reminder[]
+  insights        Insight[]
+  checkups        Checkup[]
+  sharedMoments   SharedMoment[] @relation("UserReported")
+  couples1        Couple[]    @relation("User1")
+  couples2        Couple[]    @relation("User2")
+}
+
+model DailyEntry {
+  id              BigInt   @id @default(autoincrement())
+  user            User     @relation(fields: [userId], references: [id])
+  userId          BigInt
+  entryDate       DateTime
+  mood            String
+  energyLevel     Int
+  libidoLevel     Int
+  sleepQuality    Int
+  stressLevel     Int
+  appetiteLevel   Int
+  symptoms        String
+  sexualActivity  Boolean
+  protectedSex    Boolean
+  satisfaction    String?
+  notes           String?
+}
+
+model Cycle {
+  id        BigInt     @id @default(autoincrement())
+  user      User       @relation(fields: [userId], references: [id])
+  userId    BigInt
+  type      CycleType
+  startDate DateTime
+  endDate   DateTime
+  phase     String
+  notes     String?
+}
+
+model Reminder {
+  id          BigInt   @id @default(autoincrement())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      BigInt
+  title       String
+  description String?
+  frequency   ReminderFrequency
+  time        String
+  active      Boolean  @default(true)
+}
+
+model Checkup {
+  id        BigInt     @id @default(autoincrement())
+  user      User       @relation(fields: [userId], references: [id])
+  userId    BigInt
+  type      CheckupType
+  date      DateTime
+  status    String
+  notes     String?
+}
+
+model Insight {
+  id            BigInt     @id @default(autoincrement())
+  user          User       @relation(fields: [userId], references: [id])
+  userId        BigInt
+  dateGenerated DateTime
+  type          InsightType
+  content       String
+}
+
+model Couple {
+  id         BigInt   @id @default(autoincrement())
+  user1      User     @relation("User1", fields: [user1Id], references: [id])
+  user1Id    BigInt
+  user2      User     @relation("User2", fields: [user2Id], references: [id])
+  user2Id    BigInt
+  status     CoupleStatus
+  joinedAt   DateTime @default(now())
+
+  sharedMoments SharedMoment[]
+}
+
+model SharedMoment {
+  id               BigInt            @id @default(autoincrement())
+  couple           Couple            @relation(fields: [coupleId], references: [id])
+  coupleId         BigInt
+  type             SharedMomentType
+  description      String
+  date             DateTime
+  userReportedBy   User              @relation("UserReported", fields: [userReportedById], references: [id])
+  userReportedById BigInt
+}
+
+model Content {
+  id           BigInt   @id @default(autoincrement())
+  title        String
+  type         String
+  targetGender String
+  targetGoal   String
+  contentUrl   String
+  createdAt    DateTime @default(now())
+}
+
+
+
+enum Gender {
+  male
+  female
+  non_binary
+  other
+}
+
+enum Goal {
+  fertility
+  self_awareness
+  couple
+  wellness
+}
+
+enum CoupleStatus {
+  pending
+  active
+  disconnected
+}
+
+enum ReminderFrequency {
+  daily
+  weekly
+  monthly
+  once
+}
+
+enum CheckupType {
+  medical
+  mental
+  sexual
+}
+
+enum InsightType {
+  pattern
+  correlation
+  tip
+}
+
+enum CycleType {
+  menstrual
+  hormonal
+  custom
+}
+
+enum SharedMomentType {
+  emotional
+  conflict
+  sexual
+  conversation
+}
