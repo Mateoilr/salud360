@@ -1,0 +1,156 @@
+<ion-app>
+  <ion-content>
+    <!-- Header -->
+    <div class="header-toolbar">
+      <div class="header-title">Mi ciclo</div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <ion-segment [(ngModel)]="viewMode" class="view-selector">
+      <ion-segment-button value="mes">
+        <ion-label>Mes</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="semana">
+        <ion-label>Semana</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <!-- Stats Container -->
+    <div class="stats-container">
+      <!-- Emociones Card -->
+      <ion-card class="stat-card">
+        <ion-card-header>
+          <ion-card-title>Emociones</ion-card-title>
+          <ion-card-subtitle>Esta semana</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ngx-charts-bar-vertical
+            [results]="emotionData"
+            [scheme]="'vivid'"
+            [xAxis]="false"
+            [yAxis]="false"
+            [legend]="false"
+            [showDataLabel]="false"
+            [animations]="true"
+            [showGridLines]="false"
+            [barPadding]="10"
+            [roundEdges]="true"
+            [view]="[chartWidth, 100]" />
+          <div class="day-labels">
+            <span *ngFor="let d of weekDays">{{ d }}</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Libido Card -->
+      <ion-card class="stat-card">
+        <ion-card-header>
+          <ion-card-title>Libido</ion-card-title>
+          <ion-card-subtitle>Esta semana</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ngx-charts-bar-vertical
+            [results]="libidoData"
+            [scheme]="'vivid'"
+            [xAxis]="false"
+            [yAxis]="false"
+            [legend]="false"
+            [showDataLabel]="false"
+            [animations]="true"
+            [showGridLines]="false"
+            [barPadding]="10"
+            [roundEdges]="true"
+            [view]="[chartWidth, 100]" />
+          <div class="day-labels">
+            <span *ngFor="let d of weekDays">{{ d }}</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Energía Card -->
+      <ion-card class="stat-card">
+        <ion-card-header>
+          <ion-card-title>Energía</ion-card-title>
+          <ion-card-subtitle>Esta semana</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ngx-charts-bar-vertical
+            [results]="energyData"
+            [scheme]="'vivid'"
+            [xAxis]="false"
+            [yAxis]="false"
+            [legend]="false"
+            [showDataLabel]="false"
+            [animations]="true"
+            [showGridLines]="false"
+            [barPadding]="10"
+            [roundEdges]="true"
+            [view]="[chartWidth, 100]" />
+          <div class="day-labels">
+            <span *ngFor="let d of weekDays">{{ d }}</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Actividad sexual Card -->
+      <ion-card class="stat-card">
+        <ion-card-header>
+          <ion-card-title>Actividad sexual</ion-card-title>
+          <ion-card-subtitle>Esta semana</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ngx-charts-bar-vertical
+            [results]="sexualData"
+            [scheme]="'vivid'"
+            [xAxis]="false"
+            [yAxis]="false"
+            [legend]="false"
+            [showDataLabel]="false"
+            [animations]="true"
+            [showGridLines]="false"
+            [barPadding]="10"
+            [roundEdges]="true"
+            [view]="[chartWidth, 100]" />
+          <div class="day-labels">
+            <span *ngFor="let d of weekDays">{{ d }}</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Hábitos Card -->
+      <ion-card class="stat-card">
+        <ion-card-header>
+          <ion-card-title>Hábitos</ion-card-title>
+          <ion-card-subtitle>Esta semana</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ngx-charts-bar-vertical
+            [results]="habitsData"
+            [scheme]="'vivid'"
+            [xAxis]="false"
+            [yAxis]="false"
+            [legend]="false"
+            [showDataLabel]="false"
+            [animations]="true"
+            [showGridLines]="false"
+            [barPadding]="10"
+            [roundEdges]="true"
+            [view]="[chartWidth, 100]" />
+          <div class="day-labels">
+            <span *ngFor="let d of weekDays">{{ d }}</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Perspectivas -->
+      <div class="perspective-section">
+        <div class="perspective-title">Perspectivas</div>
+        <div class="profile-card">
+          <div class="profile-avatar">
+            👩‍🦱
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-app>

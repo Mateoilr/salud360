@@ -1,0 +1,108 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Configuración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="profile-section">
+    <div class="profile-avatar">
+      <img [src]="userProfile?.avatar || 'assets/default-avatar.png'" alt="Profile Avatar">
+    </div>
+    <h2 class="profile-name">{{ userProfile?.displayName || 'Usuario' }}</h2>
+    <p class="profile-username">{{ userProfile?.username || '@usuario' }}</p>
+  </div>
+
+  <div class="settings-section">
+    <h3 class="section-title">Cuenta</h3>
+    
+    <ion-item lines="none" class="setting-item">
+      <ion-label>
+        <h4>Nombre</h4>
+      </ion-label>
+      <ion-label slot="end" class="value-label">
+        {{ userProfile?.name || 'Nombre' }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" class="setting-item">
+      <ion-label>
+        <h4>Nombre de usuario</h4>
+      </ion-label>
+      <ion-label slot="end" class="value-label">
+        {{ userProfile?.username || 'usuario123' }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" class="setting-item">
+      <ion-label>
+        <h4>Email</h4>
+      </ion-label>
+      <ion-label slot="end" class="value-label">
+        {{ userProfile?.email || 'email@gmail.com' }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" class="setting-item">
+      <ion-label>
+        <h4>Teléfono celular</h4>
+      </ion-label>
+      <ion-label slot="end" class="value-label">
+        {{ userProfile?.phone || '+593 99 865 1237' }}
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <div class="settings-section">
+    <h3 class="section-title">Preferencias</h3>
+    
+    <ion-item lines="none" class="setting-item clickable" (click)="goToNotifications()">
+      <ion-label>
+        <h4>Notificaciones</h4>
+      </ion-label>
+      <ion-icon name="chevron-forward" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none" class="setting-item">
+      <ion-label>
+        <h4>Lenguaje</h4>
+      </ion-label>
+      <ion-label slot="end" class="value-label">
+        {{ userProfile?.language || 'Español' }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" class="setting-item clickable">
+      <ion-label>
+        <h4>Tema oscuro</h4>
+      </ion-label>
+      <ion-toggle slot="end" [(ngModel)]="isDarkMode" (ionChange)="toggleTheme()"></ion-toggle>
+    </ion-item>
+  </div>
+
+  <div class="settings-section">
+    <h3 class="section-title">Privacidad</h3>
+    
+    <ion-item lines="none" class="setting-item clickable" (click)="goToVisibility()">
+      <ion-label>
+        <h4>Ajuste de visibilidad</h4>
+      </ion-label>
+      <ion-icon name="chevron-forward" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none" class="setting-item clickable" (click)="goToCoupleCode()">
+      <ion-label>
+        <h4>Código de pareja</h4>
+      </ion-label>
+      <ion-icon name="chevron-forward" slot="end"></ion-icon>
+    </ion-item>
+  </div>
+
+  <!-- Loading overlay -->
+  <div class="loading-overlay" *ngIf="isLoading">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ion-content>

@@ -1,0 +1,139 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Bienestar personal
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Bienestar personal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="content-container">
+    <!-- Contenido Personalizado Section -->
+    <div class="section">
+      <h2>Contenido Personalizado</h2>
+      
+      <!-- Tabs -->
+      <ion-segment [(ngModel)]="selectedTab" class="custom-segment">
+        <ion-segment-button value="videos">
+          <ion-label>Videos</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="articulos">
+          <ion-label>Artículos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <!-- Content Cards with Swiper -->
+      <div class="content-cards">
+        <swiper-container
+          slides-per-view="1.2"
+          space-between="15"
+          free-mode="true"
+          class="meditation-swiper"
+        >
+        @for (content of meditationContent; track content.id) {
+          <swiper-slide>
+            <div class="content-card">
+              <div class="card-image">
+                <div class="card-image-content"></div>
+              </div>
+              <div class="card-content">
+                <h3>{{ content.title }}</h3>
+                <p>{{ content.description }}</p>
+                <p>{{ content.duration }}</p>
+              </div>
+            </div>
+          </swiper-slide>
+        }
+        </swiper-container>
+      </div>
+    </div>
+
+    <!-- Mini Tests Section -->
+    <div class="section">
+      <h2>Mini Tests</h2>
+      
+      <div class="test-list">
+        <div class="test-card" (click)="startTest('stress')">
+          <div class="test-icon stress-icon">
+            <ion-icon name="heart-outline"></ion-icon>
+          </div>
+          <div class="test-content">
+            <h3>Test de Estrés</h3>
+            <p>Evalúa tus niveles de estrés</p>
+          </div>
+          <ion-button fill="clear" size="small">
+            Comenzar
+          </ion-button>
+        </div>
+
+        <div class="test-card" (click)="startTest('mental-health')">
+          <div class="test-icon mental-icon">
+            <ion-icon name="happy-outline"></ion-icon>
+          </div>
+          <div class="test-content">
+            <h3>Test de Salud Mental</h3>
+            <p>Conoce tu bienestar emocional</p>
+          </div>
+          <ion-button fill="clear" size="small">
+            Comenzar
+          </ion-button>
+        </div>
+
+        <div class="test-card" (click)="startTest('sexuality')">
+          <div class="test-icon sexuality-icon">
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+          <div class="test-content">
+            <h3>Test de Sexualidad</h3>
+            <p>Explora tu salud sexual</p>
+          </div>
+          <ion-button fill="clear" size="small">
+            Comenzar
+          </ion-button>
+        </div>
+
+        <div class="test-card" (click)="startTest('habits')">
+          <div class="test-icon habits-icon">
+            <ion-icon name="leaf-outline"></ion-icon>
+          </div>
+          <div class="test-content">
+            <h3>Test de Hábitos</h3>
+            <p>Analiza tus rutinas diarias</p>
+          </div>
+          <ion-button fill="clear" size="small">
+            Comenzar
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="inicio">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="comunidad">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label>Comunidad</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="contenido" class="active">
+      <ion-icon name="play-outline"></ion-icon>
+      <ion-label>Contenido</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="perfil">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-content>

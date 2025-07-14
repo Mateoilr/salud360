@@ -1,0 +1,159 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--app-card-background);
+        --color: var(--app-text-color);
+
+        ion-title {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        ion-back-button {
+            --color: var(--app-text-color);
+            font-size: 24px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--app-background);
+
+    .profile-section {
+        background: var(--app-card-background);
+        padding: 40px 20px 30px;
+        text-align: center;
+        margin-bottom: 20px;
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffb39a, #ffa07a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--app-text-color);
+            margin: 0 0 8px 0;
+        }
+
+        .profile-username {
+            font-size: 16px;
+            color: var(--app-text-secondary);
+            margin: 0;
+        }
+    }
+
+    .settings-section {
+        margin-bottom: 30px;
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--app-text-color);
+            margin: 0 0 15px 20px;
+        }
+
+        .setting-item {
+            --background: var(--app-card-background);
+            --padding-start: 20px;
+            --padding-end: 20px;
+            --min-height: 60px;
+            margin-bottom: 1px;
+            --color: var(--app-text-color);
+
+            &.clickable {
+                cursor: pointer;
+
+                &:hover {
+                    --background: var(--app-hover-color);
+                }
+            }
+
+            ion-label {
+                h4 {
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: var(--app-text-color);
+                    margin: 0;
+                }
+
+                &.value-label {
+                    font-size: 16px;
+                    color: var(--app-text-secondary);
+                    text-align: right;
+                }
+            }
+
+            ion-icon {
+                color: var(--app-text-secondary);
+                font-size: 20px;
+            }
+        }
+    }
+
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+
+        ion-spinner {
+            --color: var(--ion-color-primary);
+            width: 32px;
+            height: 32px;
+        }
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .profile-section {
+        padding: 30px 15px 25px;
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+        }
+
+        .profile-name {
+            font-size: 20px;
+        }
+
+        .profile-username {
+            font-size: 14px;
+        }
+    }
+
+    .settings-section {
+        .section-title {
+            font-size: 16px;
+            margin-left: 15px;
+        }
+
+        .setting-item {
+            --padding-start: 15px;
+            --padding-end: 15px;
+            --min-height: 55px;
+        }
+    }
+}

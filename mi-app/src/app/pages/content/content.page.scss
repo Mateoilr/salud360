@@ -1,0 +1,234 @@
+.content-container {
+    padding: 20px;
+    background: var(--app-background);
+  }
+  
+  .section {
+    margin-bottom: 30px;
+    
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--app-text-color);
+      margin-bottom: 20px;
+    }
+  }
+  
+  // Custom Segment Styles
+  .custom-segment {
+    background: var(--app-card-background);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 20px;
+    box-shadow: var(--app-shadow);
+    
+    ion-segment-button {
+      --background: transparent;
+      --background-checked: var(--ion-color-primary);
+      --color: var(--app-text-secondary);
+      --color-checked: #ffffff;
+      --border-radius: 8px;
+      font-weight: 500;
+      
+      &.segment-button-checked {
+        box-shadow: 0 2px 8px rgba(88, 101, 242, 0.3);
+      }
+    }
+  }
+  
+  // Content Cards
+  .content-cards {
+    .meditation-swiper {
+      padding: 10px 0;
+    }
+  }
+  
+  .content-card {
+    background: var(--app-card-background);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--app-shadow);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card-image {
+      height: 160px;
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+        z-index: 1;
+      }
+    }
+    
+    .card-content {
+      padding: 16px;
+      
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--app-text-color);
+        margin-bottom: 8px;
+      }
+      
+      p {
+        font-size: 14px;
+        color: var(--app-text-secondary);
+        margin: 0;
+      }
+    }
+  }
+  
+  // Test Cards
+  .test-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .test-card {
+    display: flex;
+    align-items: center;
+    background: var(--app-card-background);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--app-shadow);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+      transform: translateY(-2px);
+      background: var(--app-hover-color);
+    }
+    
+    .test-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+      
+      ion-icon {
+        font-size: 28px;
+        color: #ffffff;
+      }
+    }
+    
+    .test-content {
+      flex: 1;
+      
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--app-text-color);
+        margin-bottom: 4px;
+      }
+      
+      p {
+        font-size: 14px;
+        color: var(--app-text-secondary);
+        margin: 0;
+      }
+    }
+    
+    ion-button {
+      --color: var(--ion-color-primary);
+      --background: rgba(88, 101, 242, 0.1);
+      --border-radius: 8px;
+      font-weight: 500;
+    }
+  }
+  
+  // Test Icon Colors
+  .stress-icon {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  }
+  
+  .mental-icon {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  }
+  
+  .sexuality-icon {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+  }
+  
+  .habits-icon {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+  }
+  
+  // Bottom Tab Bar
+  ion-tab-bar {
+    --background: var(--app-card-background);
+    --border: 1px solid var(--app-border-color);
+    height: 70px;
+    
+    ion-tab-button {
+      --color: var(--app-text-secondary);
+      --color-selected: var(--ion-color-primary);
+      
+      &.active {
+        --color: var(--ion-color-primary);
+        
+        ion-icon {
+          color: var(--ion-color-primary);
+        }
+      }
+      
+      ion-icon {
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+      
+      ion-label {
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+  
+  // Responsive Design
+  @media (max-width: 768px) {
+    .content-container {
+      padding: 16px;
+    }
+    
+    .section h2 {
+      font-size: 20px;
+    }
+    
+    .content-card {
+      .card-image {
+        height: 140px;
+      }
+    }
+    
+    .test-card {
+      padding: 16px;
+      
+      .test-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 12px;
+        
+        ion-icon {
+          font-size: 24px;
+        }
+      }
+      
+      .test-content h3 {
+        font-size: 16px;
+      }
+    }
+  }

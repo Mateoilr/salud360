@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/calendar-settings"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sincronizar con pareja</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="content-container">
+    
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="content-section">
+        <h2 class="section-title">Conecta con tu pareja</h2>
+        
+        <p class="description">
+          Sincroniza tu cuenta con la de tu pareja para 
+          compartir información sobre tu ciclo y estado 
+          emocional. Esto te permitirá entender mejor sus 
+          necesidades y fortalecer tu relación.
+        </p>
+        
+        <div class="illustration-container">
+          <div class="illustration-placeholder">
+            <!-- Placeholder for illustration -->
+            <ion-icon name="people-outline" class="illustration-icon"></ion-icon>
+          </div>
+        </div>
+        
+        <ion-button 
+          expand="block" 
+          shape="round" 
+          class="send-request-button"
+          (click)="sendRequest()">
+          Enviar solicitud
+        </ion-button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

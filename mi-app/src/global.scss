@@ -35,3 +35,165 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+// Variables globales de temas
+:root {
+    // Tema claro (por defecto)
+    --app-background: #ffffff;
+    --app-card-background: #f8f9fa;
+    --app-text-color: #1a1a1a;
+    --app-text-secondary: #6c757d;
+    --app-border-color: #e9ecef;
+    --app-hover-color: #f1f3f4;
+    --app-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    // Colores primarios personalizados
+    --ion-color-primary: #5865f2;
+    --ion-color-primary-rgb: 88, 101, 242;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #4d5bd9;
+    --ion-color-primary-tint: #6974f3;
+
+    // Colores secundarios
+    --ion-color-secondary: #17a2b8;
+    --ion-color-secondary-rgb: 23, 162, 184;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #148ea1;
+    --ion-color-secondary-tint: #2eabb8;
+}
+
+// Tema oscuro
+[data-theme="dark"] {
+    --app-background: #1a1a1a;
+    --app-card-background: #2d2d2d;
+    --app-text-color: #ffffff;
+    --app-text-secondary: #a0a0a0;
+    --app-border-color: #404040;
+    --app-hover-color: #383838;
+    --app-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    // Ajustes para el tema oscuro en Ionic
+    --ion-background-color: #1a1a1a;
+    --ion-background-color-rgb: 26, 26, 26;
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255, 255, 255;
+    --ion-color-step-50: #262626;
+    --ion-color-step-100: #2d2d2d;
+    --ion-color-step-150: #333333;
+    --ion-color-step-200: #404040;
+    --ion-color-step-250: #4d4d4d;
+    --ion-color-step-300: #595959;
+    --ion-color-step-350: #666666;
+    --ion-color-step-400: #737373;
+    --ion-color-step-450: #808080;
+    --ion-color-step-500: #8c8c8c;
+    --ion-color-step-550: #999999;
+    --ion-color-step-600: #a6a6a6;
+    --ion-color-step-650: #b3b3b3;
+    --ion-color-step-700: #bfbfbf;
+    --ion-color-step-750: #cccccc;
+    --ion-color-step-800: #d9d9d9;
+    --ion-color-step-850: #e6e6e6;
+    --ion-color-step-900: #f2f2f2;
+    --ion-color-step-950: #ffffff;
+
+    --ion-toolbar-background: #2d2d2d;
+    --ion-toolbar-border-color: #404040;
+    --ion-toolbar-color: #ffffff;
+    --ion-item-background: #2d2d2d;
+    --ion-item-border-color: #404040;
+    --ion-item-color: #ffffff;
+    --ion-card-background: #2d2d2d;
+}
+
+// Clases utilitarias para temas
+.theme-bg {
+    background-color: var(--app-background);
+}
+
+.theme-card-bg {
+    background-color: var(--app-card-background);
+}
+
+.theme-text {
+    color: var(--app-text-color);
+}
+
+.theme-text-secondary {
+    color: var(--app-text-secondary);
+}
+
+.theme-border {
+    border-color: var(--app-border-color);
+}
+
+.theme-hover {
+    &:hover {
+        background-color: var(--app-hover-color);
+    }
+}
+
+// Animaciones suaves para cambios de tema
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+// Estilos para mejorar la experiencia del usuario
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Mejoras visuales para componentes Ionic
+ion-segment {
+    --background: var(--app-card-background);
+
+    ion-segment-button {
+        --color: var(--app-text-color);
+        --color-checked: var(--ion-color-primary);
+        --background-checked: var(--app-card-background);
+        --border-color: var(--app-border-color);
+        --indicator-color: var(--ion-color-primary);
+    }
+}
+
+ion-item {
+    --background: var(--app-card-background);
+    --color: var(--app-text-color);
+    --border-color: var(--app-border-color);
+    --inner-border-width: 0;
+    --padding-start: 16px;
+    --padding-end: 16px;
+
+    ion-label {
+        color: var(--app-text-color);
+    }
+}
+
+ion-button {
+    --color: var(--app-text-color);
+
+    &.button-fill-clear {
+        --color: var(--app-text-color);
+        --color-hover: var(--ion-color-primary);
+    }
+}
+
+ion-toolbar {
+    --background: var(--app-card-background);
+    --color: var(--app-text-color);
+    --border-color: var(--app-border-color);
+}

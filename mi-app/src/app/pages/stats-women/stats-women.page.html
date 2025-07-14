@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Hoy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <!-- Perfil de Usuario -->
+    <div class="user-profile">
+      <div class="avatar">
+        <img src="assets/images/sophia-avatar.jpg" alt="Sophia">
+      </div>
+      <div class="user-info">
+        <h2>Sophia</h2>
+        <p class="cycle-info">Día del Ciclo 12</p>
+        <p class="energy-level">Alta Energía</p>
+      </div>
+    </div>
+
+    <!-- Pregunta del Estado -->
+    <div class="question-section">
+      <h3>¿Cómo te sientes hoy?</h3>
+      
+      <!-- Estados -->
+      <div class="status-items">
+        <ion-item button (click)="updateMood('happy')" class="status-item">
+          <ion-icon name="happy-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h4>Estado de Ánimo</h4>
+            <p [ngClass]="{'active': currentMood === 'happy'}">{{ getMoodText() }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item button (click)="updateEnergy('high')" class="status-item">
+          <ion-icon name="flash-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h4>Energía</h4>
+            <p [ngClass]="{'active': currentEnergy === 'high'}">{{ getEnergyText() }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item button (click)="updateLibido('medium')" class="status-item">
+          <ion-icon name="heart-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h4>Libido</h4>
+            <p [ngClass]="{'active': currentLibido === 'medium'}">{{ getLibidoText() }}</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+
+    <!-- Síntomas -->
+    <div class="symptoms-section">
+      <h3>Síntomas</h3>
+      <div class="symptoms-list">
+        <ion-item button (click)="toggleSymptom('cramps')" class="symptom-item">
+          <ion-icon name="medical-outline" slot="start"></ion-icon>
+          <ion-label>Cólicos</ion-label>
+          <ion-checkbox 
+            slot="end" 
+            [checked]="symptoms.cramps" 
+            (ionChange)="toggleSymptom('cramps')">
+          </ion-checkbox>
+        </ion-item>
+
+        <ion-item button (click)="toggleSymptom('bloating')" class="symptom-item">
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <ion-label>Hinchazón</ion-label>
+          <ion-checkbox 
+            slot="end" 
+            [checked]="symptoms.bloating" 
+            (ionChange)="toggleSymptom('bloating')">
+          </ion-checkbox>
+        </ion-item>
+      </div>
+    </div>
+
+    <!-- Recomendaciones -->
+    <div class="recommendations-section">
+      <h3>Recomendaciones</h3>
+      <div class="recommendations-placeholder">
+        <p>Basado en tu ciclo y estado actual, aquí aparecerán recomendaciones personalizadas.</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

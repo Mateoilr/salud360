@@ -1,0 +1,102 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Hoy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <!-- Perfil de Usuario -->
+    <div class="user-profile">
+      <div class="avatar">
+        <img src="assets/images/ethan-avatar.jpg" alt="Ethan">
+      </div>
+      <div class="user-info">
+        <h2>Ethan</h2>
+        <p class="greeting">¿Cómo te sientes hoy?</p>
+      </div>
+    </div>
+
+    <!-- Resumen Diario -->
+    <div class="daily-summary">
+      <h3>Resumen Diario</h3>
+      
+      <div class="summary-items">
+        <ion-item button (click)="updateEnergyLevel()" class="summary-item">
+          <ion-icon name="flash-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h4>Niveles de Energía</h4>
+            <p class="energy-status">{{ getEnergyText() }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item button (click)="updateMood()" class="summary-item">
+          <ion-icon name="happy-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h4>Estado de Ánimo</h4>
+            <p class="mood-status">{{ getMoodText() }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item button (click)="updatePhysicalActivity()" class="summary-item">
+          <ion-icon name="barbell-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h4>Actividad Física</h4>
+            <p class="activity-status">{{ physicalActivity }} min</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item button (click)="updateSexualHealth()" class="summary-item">
+          <ion-icon name="heart-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h4>Salud Sexual</h4>
+            <p class="sexual-health-status">{{ getSexualHealthText() }}</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+
+    <!-- Consejos Personalizados -->
+    <div class="personalized-tips">
+      <h3>Consejos Personalizados</h3>
+      
+      <div class="tip-card">
+        <div class="tip-header">
+          <span class="tip-label">Consejo del Día</span>
+          <div class="tip-illustration">
+            <ion-icon name="bed-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="tip-content">
+          <h4>Prioriza el Sueño</h4>
+          <p>Apunta a 7-9 horas de sueño de calidad para apoyar el equilibrio hormonal y el bienestar general.</p>
+        </div>
+      </div>
+
+      <!-- Botón para más consejos -->
+      <ion-button expand="block" fill="outline" class="more-tips-btn" (click)="showMoreTips()">
+        <ion-icon name="add-outline" slot="start"></ion-icon>
+        Ver Más Consejos
+      </ion-button>
+    </div>
+
+    <!-- Estadísticas Rápidas -->
+    <div class="quick-stats" *ngIf="showStats">
+      <div class="stat-item">
+        <div class="stat-value">{{ weeklyGoal }}%</div>
+        <div class="stat-label">Meta Semanal</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">{{ sleepHours }}h</div>
+        <div class="stat-label">Sueño Promedio</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">{{ workoutStreak }}</div>
+        <div class="stat-label">Días Consecutivos</div>
+      </div>
+    </div>
+  </div>
+</ion-content>

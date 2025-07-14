@@ -1,0 +1,199 @@
+.container {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--app-card-background, linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%));
+    border-radius: 15px;
+    box-shadow: var(--app-shadow, 0 2px 10px rgba(0, 0, 0, 0.1));
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 20px;
+        background: var(--app-accent-color, linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .user-info {
+        h2 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--app-text-color, #2c3e50);
+        }
+
+        .cycle-info {
+            margin: 0 0 3px 0;
+            font-size: 14px;
+            color: var(--app-text-secondary, #7f8c8d);
+        }
+
+        .energy-level {
+            margin: 0;
+            font-size: 14px;
+            color: var(--app-warning-color, #e74c3c);
+            font-weight: 500;
+        }
+    }
+}
+
+.question-section {
+    margin-bottom: 30px;
+
+    h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--app-text-color, #2c3e50);
+        margin-bottom: 15px;
+    }
+
+    .status-items {
+        .status-item {
+            --background: var(--app-card-background, #ffffff);
+            --border-radius: 12px;
+            --padding-start: 16px;
+            --padding-end: 16px;
+            margin-bottom: 10px;
+            box-shadow: var(--app-shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
+
+            ion-icon {
+                color: var(--app-accent-color, #3498db);
+                font-size: 20px;
+            }
+
+            ion-label {
+                h4 {
+                    margin: 0 0 5px 0;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: var(--app-text-color, #2c3e50);
+                }
+
+                p {
+                    margin: 0;
+                    font-size: 14px;
+                    color: var(--app-text-secondary, #7f8c8d);
+                    transition: all 0.3s ease;
+
+                    &.active {
+                        color: var(--app-accent-color, #3498db);
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            &:hover {
+                --background: var(--app-hover-color, #f8f9fa);
+            }
+        }
+    }
+}
+
+.symptoms-section {
+    margin-bottom: 30px;
+
+    h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--app-text-color, #2c3e50);
+        margin-bottom: 15px;
+    }
+
+    .symptoms-list {
+        .symptom-item {
+            --background: var(--app-card-background, #ffffff);
+            --border-radius: 12px;
+            --padding-start: 16px;
+            --padding-end: 16px;
+            margin-bottom: 10px;
+            box-shadow: var(--app-shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
+
+            ion-icon {
+                color: var(--app-warning-color, #e74c3c);
+                font-size: 20px;
+            }
+
+            ion-label {
+                font-size: 16px;
+                color: var(--app-text-color, #2c3e50);
+            }
+
+            ion-checkbox {
+                --color: var(--app-accent-color, #3498db);
+                --color-checked: var(--app-accent-color, #3498db);
+            }
+
+            &:hover {
+                --background: var(--app-hover-color, #f8f9fa);
+            }
+        }
+    }
+}
+
+.recommendations-section {
+    margin-bottom: 100px;
+
+    h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--app-text-color, #2c3e50);
+        margin-bottom: 15px;
+    }
+
+    .recommendations-placeholder {
+        padding: 20px;
+        background: var(--app-accent-color, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+        border-radius: 15px;
+        text-align: center;
+
+        p {
+            margin: 0;
+            color: var(--app-text-color, white);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    }
+}
+
+// Animaciones
+.status-item,
+.symptom-item {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .user-profile {
+        padding: 15px;
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .user-info h2 {
+            font-size: 20px;
+        }
+    }
+}

@@ -1,0 +1,297 @@
+// mi-ciclo.page.scss
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    
+    ion-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+ion-content {
+  --background: var(--app-background);
+  --color: var(--app-text-color);
+}
+
+.cycle-container {
+  padding: 16px;
+  
+  h2, h3 {
+    color: var(--app-text-color);
+    margin: 16px 0 8px 0;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+}
+
+// Selector de vista
+.view-selector {
+  margin-bottom: 20px;
+  --background: var(--app-card-background);
+  
+  ion-segment-button {
+    --color: var(--app-text-color);
+    --color-checked: var(--ion-color-primary);
+    --background-checked: var(--app-card-background);
+    --border-color: var(--app-border-color);
+  }
+}
+
+// Header del calendario
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  
+  ion-button {
+    --color: var(--app-text-color);
+    
+    ion-icon {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Vista del calendario
+.calendar-view {
+  background: var(--app-card-background);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  &.week-view {
+    .calendar-grid {
+      gap: 12px;
+    }
+    
+    .calendar-day {
+      min-height: 60px;
+      border: 2px solid transparent;
+      
+      &:hover {
+        border-color: var(--ion-color-primary);
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+
+.day-headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+  
+  .day-header {
+    text-align: center;
+    font-weight: 600;
+    color: var(--app-text-secondary);
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+}
+
+.calendar-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 8px;
+  
+  &.week-view {
+    grid-template-columns: repeat(7, 1fr) !important;
+    
+    .calendar-day {
+      min-height: 50px;
+      
+      .day-number {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      
+      &.today {
+        background: var(--ion-color-secondary);
+        color: var(--ion-color-secondary-contrast);
+        transform: scale(1.05);
+        box-shadow: 0 2px 8px rgba(var(--ion-color-secondary-rgb), 0.3);
+      }
+      
+      &.selected {
+        background: var(--ion-color-primary);
+        color: var(--ion-color-primary-contrast);
+        transform: scale(1.05);
+        box-shadow: 0 2px 8px rgba(var(--ion-color-primary-rgb), 0.3);
+      }
+    }
+  }
+}
+
+.calendar-day {
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 40px;
+  
+  &:hover {
+    background: var(--app-hover-color);
+  }
+  
+  &.selected {
+    background: var(--ion-color-primary);
+    color: var(--ion-color-primary-contrast);
+    
+    .day-number {
+      color: var(--ion-color-primary-contrast);
+    }
+  }
+  
+  &.today {
+    background: var(--ion-color-secondary);
+    color: var(--ion-color-secondary-contrast);
+    
+    .day-number {
+      color: var(--ion-color-secondary-contrast);
+      font-weight: 600;
+    }
+  }
+  
+  &.other-month {
+    opacity: 0.4;
+  }
+  
+  &.fertile-day {
+    background: rgba(var(--ion-color-success-rgb), 0.1);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--ion-color-success);
+      border-radius: 50%;
+    }
+  }
+  
+  &.ovulation-day {
+    background: rgba(var(--ion-color-warning-rgb), 0.2);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--ion-color-warning);
+      border-radius: 50%;
+    }
+  }
+  
+  .day-number {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--app-text-color);
+  }
+  
+  .day-indicators {
+    display: flex;
+    gap: 2px;
+    margin-top: 2px;
+    
+    ion-icon {
+      font-size: 0.7rem;
+    }
+    
+    .fertile-icon {
+      color: var(--ion-color-success);
+    }
+    
+    .ovulation-icon {
+      color: var(--ion-color-warning);
+    }
+  }
+}
+
+// Secciones
+.cycle-phase,
+.events-section,
+.register-section {
+  margin-bottom: 24px;
+}
+
+.phase-item,
+.event-item,
+.register-item {
+  --background: var(--app-card-background);
+  --color: var(--app-text-color);
+  --border-color: var(--app-border-color);
+  margin-bottom: 8px;
+  border-radius: 8px;
+  
+  ion-icon {
+    color: var(--ion-color-primary);
+  }
+  
+  ion-label {
+    h4 {
+      color: var(--app-text-color);
+      margin: 0;
+      font-weight: 500;
+    }
+    
+    p {
+      color: var(--app-text-secondary);
+      margin: 4px 0 0 0;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.register-item {
+  cursor: pointer;
+  
+  &:hover {
+    --background: var(--app-hover-color);
+  }
+}
+
+// Variables de tema ya definidas en global.scss
+
+// Responsive
+@media (max-width: 768px) {
+  .calendar-day {
+    min-height: 35px;
+    
+    .day-number {
+      font-size: 0.85rem;
+    }
+  }
+  
+  .day-headers .day-header {
+    font-size: 0.8rem;
+  }
+}

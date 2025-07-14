@@ -1,0 +1,108 @@
+<!-- mi-ciclo.page.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mi ciclo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="toggleTheme()">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mi ciclo</ion-title>
+    </ion-toolbar>
+  </ion-header>
+      <!-- Selector de vista -->
+      <ion-segment [(ngModel)]="viewMode" class="view-selector" (ionChange)="onViewModeChange()">
+        <ion-segment-button value="mes">
+          <ion-label>Mes</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="semana">
+          <ion-label>Semana</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+  <div class="cycle-container">
+
+    <!-- Navegación del calendario -->
+    <div class="calendar-header">
+      <ion-button fill="clear" (click)="previousPeriod()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <h2>{{ getCurrentPeriodTitle() }}</h2>
+      <ion-button fill="clear" (click)="nextPeriod()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Vista del calendario -->
+    <div class="calendar-view" [class.week-view]="viewMode === 'semana'">
+      <!-- Encabezados de días -->
+      <div class="day-headers">
+        <div class="day-header" *ngFor="let day of dayHeaders">{{ day }}</div>
+      </div>
+
+      <!-- Días del calendario -->
+      <div class="calendar-grid" [class.week-view]="viewMode === 'semana'">
+        
+        <div 
+          class="calendar-day" 
+          *ngFor="let day of displayDays; let i = index"
+          [class.selected]="isSelectedDay(day)"
+          [class.today]="isToday(day)"
+          [class.other-month]="isOtherMonth(day)"
+          [class.fertile-day]="isFertileDay(day)"
+          [class.ovulation-day]="isOvulationDay(day)"
+          (click)="selectDay(day)">
+          <span class="day-number">{{ day.getDate() }}</span>
+          <div class="day-indicators">
+            <ion-icon 
+              *ngIf="isFertileDay(day)" 
+              name="water-outline" 
+              class="fertile-icon">
+            </ion-icon>
+            <ion-icon 
+              *ngIf="isOvulationDay(day)" 
+              name="egg-outline" 
+              class="ovulation-icon">
+            </ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fase del ciclo -->
+    <div class="cycle-phase">
+      <h3>Fase del ciclo</h3>
+      <ion-item class="phase-item">
+        <ion-icon name="flower-outline" slot="start"></ion-icon>
+        <ion-label>
+          <h4>{{ currentPhase.name }}</h4>
+          <p>{{ currentPhase.description }}</p>
+        </ion-label>
+      </ion-item>
+    </div>
+
+    <!-- Eventos -->
+    <div class="events-section">
+      <h3>Eventos</h3>
+      <ion-item *ngFor="let event of events" class="event-item">
+        <ion-icon [name]="event.icon" slot="start"></ion-icon>
+        <ion-label>{{ event.name }}</ion-label>
+      </ion-item>
+    </div>
+
+    <!-- Registrar -->
+    <div class="register-section">
+      <h3>Registrar</h3>
+      <ion-item *ngFor="let register of registerOptions" class="register-item" (click)="openRegister(register)">
+        <ion-icon [name]="register.icon" slot="start"></ion-icon>
+        <ion-label>{{ register.name }}</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

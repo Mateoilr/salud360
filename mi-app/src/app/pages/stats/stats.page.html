@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio Mujer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="header-section">
+    <h1>Resumen de hoy</h1>
+  </div>
+
+  <div class="summary-cards">
+    <!-- Calendario -->
+    <div class="summary-card">
+      <div class="card-icon">
+        <ion-icon name="calendar-outline"></ion-icon>
+      </div>
+      <div class="card-content">
+        <h3>Calendario</h3>
+        <p>Día 11</p>
+      </div>
+    </div>
+
+    <!-- Estado de ánimo -->
+    <div class="summary-card">
+      <div class="card-icon">
+        <ion-icon name="happy-outline"></ion-icon>
+      </div>
+      <div class="card-content">
+        <h3>Estado de ánimo</h3>
+        <p class="mood-sad">Triste</p>
+      </div>
+    </div>
+
+    <!-- Actividad y libido -->
+    <div class="summary-card">
+      <div class="card-icon">
+        <ion-icon name="heart-outline"></ion-icon>
+      </div>
+      <div class="card-content">
+        <h3>Actividad y libido</h3>
+        <p class="activity-low">Bajo</p>
+      </div>
+    </div>
+
+    <!-- Nivel de energía -->
+    <div class="summary-card">
+      <div class="card-icon energy-icon">
+        <ion-icon name="flash-outline"></ion-icon>
+      </div>
+      <div class="card-content">
+        <h3>Nivel de energía</h3>
+        <p class="energy-high">Alto</p>
+      </div>
+    </div>
+
+    <!-- Síntomas -->
+    <div class="summary-card">
+      <div class="card-icon symptoms-icon">
+        <ion-icon name="medical-outline"></ion-icon>
+      </div>
+      <div class="card-content">
+        <h3>Síntomas</h3>
+        <p class="symptoms-text">Día 11</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consejos -->
+  <div class="advice-section">
+    <h2>Consejos 💡</h2>
+    <div class="advice-card">
+      <p>Escucha atentamente a tu pareja, empatiza y reconoce que las hormonas pueden afectar el estado de ánimo lo cual
+        es completamente normal</p>
+    </div>
+  </div>
+</ion-content>
