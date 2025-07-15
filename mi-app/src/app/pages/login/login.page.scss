@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  text-align: center;
+}
+
+ion-input {
+  --background: #000000;
+  --border-radius: 8px;
+  margin-top: 10px;
+}
+
+ion-button {
+  --background: #1e40af;
+  --border-radius: 8px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.forgot-text {
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.divider {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #555;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.bottom-text {
+  font-size: 13px;
+  color: #444;
+  margin-top: 24px;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 13px;
+  text-align: left;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 6px;
+}
+
+.link {
+  color: #6a5acd; /* o el color violeta de tu botón */
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 4px;
+}
+

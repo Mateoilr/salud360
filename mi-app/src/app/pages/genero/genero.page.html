@@ -1,0 +1,46 @@
+<ion-content class="ion-padding">
+
+  <!-- Botón de texto "Regresar" -->
+  <ion-button
+    fill="clear"
+    size="small"
+    class="regresar-btn"
+    (click)="goBack()"
+  >
+    Regresar
+  </ion-button>
+
+  <div class="container">
+    <h1>¿Con qué género te identificas?</h1>
+
+    <form [formGroup]="form" (ngSubmit)="continuar()">
+      <ion-radio-group formControlName="genero">
+        <ion-item lines="full">
+          <ion-label>Mujer</ion-label>
+          <ion-radio slot="end" value="mujer"></ion-radio>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label>Hombre</ion-label>
+          <ion-radio slot="end" value="hombre"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+
+      <ion-button expand="block" type="submit" color="primary">
+        Continuar
+      </ion-button>
+    </form>
+
+    <div class="clear-container">
+      <ion-button
+        fill="clear"
+        color="medium"
+        size="small"
+        (click)="clearSelection()"
+        class="clear-btn"
+      >
+        Quitar selección
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

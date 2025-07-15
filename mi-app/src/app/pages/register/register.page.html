@@ -1,0 +1,39 @@
+<ion-content class="ion-padding">
+
+  <!-- Botón Regresar -->
+  <ion-button
+    fill="clear"
+    size="small"
+    class="regresar-btn"
+    (click)="goBack()"
+  >
+    Regresar
+  </ion-button>
+
+  <div class="container">
+    <h1>Crear Cuenta</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <ion-item>
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Confirmar contraseña</ion-label>
+        <ion-input type="password" formControlName="confirmPassword"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit">Crear Cuenta</ion-button>
+    </form>
+
+    <p class="terms">
+      Al registrarte, aceptas nuestros <a href="#">Términos y Condiciones</a>.
+    </p>
+  </div>
+</ion-content>
