@@ -23,7 +23,7 @@ export class PersonalizationPage implements OnInit {
   highEnergyDays2: boolean = true;
 
   constructor(
-    private navCtrl: NavController, 
+    private navCtrl: NavController,
     private themeService: ThemeService
   ) { }
 
@@ -83,6 +83,6 @@ export class PersonalizationPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.back();
+    this.navCtrl.navigateForward('/stats');
   }
 }

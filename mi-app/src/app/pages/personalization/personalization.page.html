@@ -1,19 +1,21 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
+<ion-toolbar>
+   <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
     <ion-title>Calendario</ion-title>
-  </ion-toolbar>
+  </ion-buttons>
+</ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="content-container">
-    
+
     <!-- Visualización Section -->
     <div class="section">
       <h2 class="section-title">Visualización</h2>
-      
+
       <ion-item lines="none" class="custom-item">
         <div class="item-content">
           <h3>Días de baja energía</h3>
@@ -66,7 +68,7 @@
     <!-- Recordatorios Section -->
     <div class="section">
       <h2 class="section-title">Recordatorios</h2>
-      
+
       <ion-item lines="none" class="custom-item" button>
         <div class="item-content">
           <h3>Recordatorio de período</h3>
@@ -85,7 +87,7 @@
     <!-- Sincronización Section -->
     <div class="section">
       <h2 class="section-title">Sincronización</h2>
-      
+
       <ion-item lines="none" class="custom-item sync-item" button>
         <div class="item-content">
           <h3>Sincronizar con otros calendarios</h3>
