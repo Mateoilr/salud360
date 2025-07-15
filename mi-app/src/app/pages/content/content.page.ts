@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { Router, RouterModule } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { ThemeService } from '../../services/theme.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-content',
@@ -93,9 +94,10 @@ export class ContentPage implements OnInit {
     private router: Router,
     private alertController: AlertController,
     private toastController: ToastController,
-    private themeService: ThemeService
-  ) { 
-    
+    private themeService: ThemeService,
+    private authService: AuthService
+  ) {
+
   }
 
   ngOnInit() {
@@ -206,9 +208,22 @@ export class ContentPage implements OnInit {
   // Navegar al test
   navigateToTest(testId: string) {
     console.log('Navegando al test:', testId);
-    // Aquí puedes navegar a la página del test específico
-    // this.router.navigate(['/test', testId]);
     this.showToast(`Iniciando test: ${testId}`);
+
+    // Simular completación del test
+    setTimeout(() => {
+      this.completeTestAndNavigate(testId);
+    }, 3000); // Simula 3 segundos de test
+  }
+
+  // Completar test y navegar a resultados
+  completeTestAndNavigate(testId: string) {
+    console.log('Test completado:', testId);
+    this.showToast('¡Test completado! Ve tus resultados en Estadísticas');
+    // Navegar a estadísticas después de completar test
+    setTimeout(() => {
+      this.navigateToStats();
+    }, 2000);
   }
 
   // Navegar a tabs
@@ -217,18 +232,78 @@ export class ContentPage implements OnInit {
     // Aquí puedes implementar la navegación entre tabs
     switch (tab) {
       case 'inicio':
-        this.router.navigate(['/tabs/inicio']);
+        this.router.navigate(['/home']);
         break;
       case 'comunidad':
-        this.router.navigate(['/tabs/comunidad']);
+        this.showToast('Comunidad próximamente disponible');
         break;
       case 'contenido':
         // Ya estamos en contenido
         break;
       case 'perfil':
-        this.router.navigate(['/tabs/perfil']);
+        this.router.navigate(['/profile']);
         break;
     }
+  }
+
+  // NUEVOS MÉTODOS DE NAVEGACIÓN
+  navigateToStats() {
+    this.router.navigate(['/stats']);
+  }
+
+  navigateToReminders() {
+    this.router.navigate(['/reminders']);
+  }
+
+  navigateToCouple() {
+    this.router.navigate(['/couple']);
+  }
+
+  navigateToPersonalization() {
+    this.router.navigate(['/personalization']);
+  }
+
+  // Navegar a estadísticas específicas por género
+  navigateToGenderStats(gender: 'women' | 'men') {
+    if (gender === 'women') {
+      this.router.navigate(['/stats-women']);
+    } else {
+      this.router.navigate(['/stats-men']);
+    }
+  }
+
+  // Cerrar sesión
+  async logout() {
+    const alert = await this.alertController.create({
+      header: 'Cerrar Sesión',
+      message: '¿Estás seguro de que quieres cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Cerrar Sesión',
+          handler: () => {
+            this.authService.logout();
+            this.router.navigate(['/login']);
+            this.showToast('Sesión cerrada exitosamente');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  // Verificar estado de autenticación
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  // Obtener usuario actual
+  getCurrentUser() {
+    return this.authService.getCurrentUser();
   }
 
   // Mostrar toast
