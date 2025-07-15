@@ -45,5 +45,37 @@ export const routes: Routes = [
   {
     path: 'syn-couple',
     loadComponent: () => import('./pages/syn-couple/syn-couple.page').then( m => m.SynCouplePage)
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./pages/register/register.page').then( m => m.RegisterPage)
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./pages/register/register.page').then( m => m.RegisterPage)
+  },
+  {
+    path: 'genero',
+    loadComponent: () => import('./pages/genero/genero.page').then( m => m.GeneroPage)
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./pages/login/login.page').then( m => m.LoginPage)
+  },
+   {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.page').then(m => m.LoginPage)
+  },
+  {
+  path: 'register',
+  loadComponent: () =>
+    import('./pages/register/register.page').then(m => m.RegisterPage)
+},
+  {
+    path: 'genero',
+    loadComponent: () =>
+      import('./pages/genero/genero.page').then(m => m.GeneroPage)
   }
+
 ];

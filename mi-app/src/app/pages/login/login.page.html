@@ -1,0 +1,77 @@
+<!-- src/app/pages/login/login.page.html -->
+<ion-content class="ion-padding">
+  <div class="container">
+    <!-- Título -->
+    <h1>Bienvenido</h1>
+
+    <!-- Formulario de Login -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+      <!-- Campo de Email -->
+      <ion-input
+        fill="outline"
+        placeholder="Gmail o Nombre de Usuario"
+        formControlName="email"
+      ></ion-input>
+      <ng-container *ngIf="loginForm.get('email') as emailCtrl">
+        <div *ngIf="emailCtrl.touched && emailCtrl.errors" class="error-text">
+          <div *ngIf="emailCtrl.errors['required']">El correo es obligatorio.</div>
+          <div *ngIf="emailCtrl.errors['email']">Correo no válido.</div>
+        </div>
+      </ng-container>
+
+      <!-- Campo de Contraseña -->
+      <ion-input
+        fill="outline"
+        type="password"
+        placeholder="Contraseña"
+        formControlName="password"
+      ></ion-input>
+      <ng-container *ngIf="loginForm.get('password') as passwordCtrl">
+        <div *ngIf="passwordCtrl.touched && passwordCtrl.errors" class="error-text">
+          <div *ngIf="passwordCtrl.errors['required']">La contraseña es obligatoria.</div>
+          <div *ngIf="passwordCtrl.errors['minlength']">Mínimo 6 caracteres.</div>
+        </div>
+      </ng-container>
+
+      <!-- Enlace "Olvidaste tu contraseña" -->
+      <div class="forgot-text" (click)="recoverPassword()">
+        ¿Olvidaste tu contraseña?
+      </div>
+
+      <!-- Botón Acceder -->
+      <ion-button expand="block" type="submit" color="primary">
+        ACCEDER
+      </ion-button>
+    </form>
+
+    <!-- Divider -->
+    <div class="divider">O continuar con:</div>
+
+    <!-- Botones sociales -->
+    <div class="social-buttons">
+      <ion-button
+        fill="solid"
+        color="tertiary"
+        shape="round"
+        (click)="loginWithFacebook()"
+      >
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-button>
+      <ion-button
+        fill="solid"
+        color="tertiary"
+        shape="round"
+        (click)="loginWithGoogle()"
+      >
+        <ion-icon name="logo-google"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Enlace a Registro -->
+    <div class="bottom-text">
+      ¿No tienes una cuenta?
+      <span class="link" routerLink="/register">Crear cuenta</span>
+    </div>
+  </div>
+</ion-content>
