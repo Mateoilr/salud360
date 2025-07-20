@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Comunidad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="chat-container">
+    <div class="date-separator">
+      <span class="date-text">May 7</span>
+    </div>
+
+    <div class="messages-container">
+      <!-- Mensaje del usuario -->
+      <div class="message-group user-message">
+        <div class="message-bubble user-bubble">
+          <p>Who was that photographer you shared with me recently?</p>
+          <span class="message-time">3:00PM</span>
+        </div>
+      </div>
+
+      <!-- Respuesta de Slim Aarons -->
+      <div class="message-group other-message">
+        <div class="message-info">
+          <span class="sender-name">Slim Aarons</span>
+          <span class="message-time">3:00PM</span>
+        </div>
+        <div class="message-bubble other-bubble">
+          <p>That's him!</p>
+        </div>
+      </div>
+
+      <!-- Pregunta sobre vision statement -->
+      <div class="message-group user-message">
+        <div class="message-bubble user-bubble">
+          <p>What was his vision statement?</p>
+          <span class="message-time">3:00PM</span>
+        </div>
+      </div>
+
+      <!-- Respuesta con vision statement -->
+      <div class="message-group other-message">
+        <div class="message-bubble other-bubble">
+          <p>"Attractive people doing attractive things in attractive places"</p>
+        </div>
+      </div>
+
+      <!-- Pregunta repetida -->
+      <div class="message-group user-message">
+        <div class="message-bubble user-bubble">
+          <p>Who was that photographer you shared with me recently?</p>
+          <span class="message-time">3:00PM</span>
+        </div>
+      </div>
+
+      <!-- Respuesta repetida -->
+      <div class="message-group other-message">
+        <div class="message-bubble other-bubble">
+          <p>"Attractive people doing attractive things in attractive places"</p>
+        </div>
+      </div>
+
+      <!-- Última pregunta -->
+      <div class="message-group user-message">
+        <div class="message-bubble user-bubble">
+          <p>Who was that photographer you shared with me recently?</p>
+          <span class="message-time">3:00PM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="message-input-container">
+      <ion-button fill="clear" class="attachment-button">
+        <ion-icon name="attach" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="voice-button">
+        <ion-icon name="mic" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-input 
+        class="message-input"
+        placeholder="Send a message"
+        [(ngModel)]="messageText"
+        (keyup.enter)="sendMessage()">
+      </ion-input>
+      <ion-button fill="clear" class="send-button" (click)="sendMessage()">
+        <ion-icon name="send" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
